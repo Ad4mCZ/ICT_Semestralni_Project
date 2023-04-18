@@ -5,6 +5,7 @@ include "db_conn.php";
 if (isset($_POST["uname"]) && isset($_POST["password"])) {
     $uname = $_POST["uname"];
     $pass = $_POST["password"];
+	$passHash = md5($pass);
 
     if (empty($uname)) {
         header("Location: index.php?error=Userame is required");
@@ -13,7 +14,7 @@ if (isset($_POST["uname"]) && isset($_POST["password"])) {
         header("Location: index.php?error=Password is required");
         exit();
     } else {
-        $query = "SELECT * FROM users WHERE username='$uname' and password='$pass'";
+        $query = "SELECT * FROM users WHERE username='$uname' and password='$passHash'";
         $result = mysqli_query($conn, $query);
         $rows = mysqli_fetch_array($result);
 
