@@ -11,6 +11,8 @@ if (isset($_SESSION["id"]) && isset($_SESSION["username"])) { ?>
 <body>
      <h1>Hello, <?php echo $_SESSION["name"]; ?></h1>
      <a href="logout.php">Logout</a>
+     <?php include 'search.php';?>
+
 </body>
 </html>
 
